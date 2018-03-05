@@ -28,18 +28,9 @@ def auto(client_ssh, host_domain):
 
 if __name__ == "__main__":
     args = parse_args()
-    # host = sys.argv[1]
-    # port = sys.argv[2]
-    # usrname = sys.argv[3]
-    # passwd = sys.argv[4]
-    # domain = sys.argv[5]
-    host = args.i
-    port = args.port
-    usrname = args.u
-    passwd = args.p
-    domain = args.d
-    print host
-    # client_ssh = Linux(host, port, usrname, passwd).connect_ssh()
-    # auto(client_ssh, domain)
+    ssh_conn = Linux(args.host, args.port, args.username, args.password)
+    client_ssh = ssh_conn.connect_ssh()
+    auto(client_ssh, args.domain)
+    output(args.host, args.port, args.username, args.password, args.domain)
 
 

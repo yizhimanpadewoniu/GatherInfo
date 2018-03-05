@@ -20,7 +20,7 @@ class Linux(object):
     def interactive(self):
         interactive_ssh = paramiko.SSHClient()
         interactive_ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        interactive_ssh.connect(self.host, self.port, username=self.usrname, password=self.passwd)
+        interactive_ssh.connect(hostname=self.host, port=self.port, username=self.usrname, password=self.passwd)
         channel = interactive_ssh.invoke_shell()
         interactive.interactive_shell(channel)
         channel.close()
@@ -29,7 +29,7 @@ class Linux(object):
     def connect_ssh(self):
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(self.host, username=self.usrname, password=self.passwd, timeout=300)
+        ssh.connect(hostname=self.host, username=self.usrname, password=self.passwd, timeout=300)
         return ssh
 
 
