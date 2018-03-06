@@ -6,6 +6,9 @@ import paramiko
 import os
 import re
 from stat import *
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 # 定义文件类型列表
@@ -103,10 +106,12 @@ def output(host, port, usrname, passwd, domain):
             for line in lines:
                 # ips = re.compile(r'(?<=<host><ip>)(.*?)(?<=(</ip>))')
                 # hosts = re.compile(r'(?<=<hostname>)(.*?)(?<=(</hostname>))')
+                # print line
                 ips = re.compile(r'<ip>(.*?)</ip>')
                 hosts = re.compile(r'<hostname>(.*?)</hostname>')
                 ip_address = list(set(re.findall(ips, line)))
                 host = list(set(re.findall(hosts, line)))
+                print ip_address, host
 
                 for i in ip_address:
                     host_nmap.write('%s\n' % i)
@@ -116,3 +121,7 @@ def output(host, port, usrname, passwd, domain):
             xml_path.close()
             host_nmap.close()
             host_url.close()
+        else:
+            print "2333"
+            continue
+

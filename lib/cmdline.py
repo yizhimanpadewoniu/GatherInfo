@@ -10,7 +10,7 @@ def parse_args():
     parser = argparse.ArgumentParser(prog="GatherInfo", formatter_class=argparse.RawTextHelpFormatter,
                                      description="A Tiny Toy For Gather Info.\nBy Am4zing(www.*********)",
                                      usage="Python gather.py [options]")
-    parser.add_argument('-d', '--domain', help='The Target Url. eg: google.com', type=str, default='', nargs='*', required=True)
+    parser.add_argument('-d', '--domain', help='The Target Url. eg: google.com', type=str, required=True)
     parser.add_argument('-host', '--host', help='The Remote SSH Host IP.', type=str, required=True)
     parser.add_argument('-p', '--password', help='The Remote SSH Host Password.', type=str, required=True)
     parser.add_argument('-u', '--username', help='The Remote SSH Host Username.', type=str, required=True)

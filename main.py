@@ -5,6 +5,7 @@ import sys
 from lib.ssh import *
 from lib.cmdline import parse_args
 from lib.output import *
+
 paramiko.util.log_to_file('lib/logs/log')
 
 
@@ -28,6 +29,7 @@ def auto(client_ssh, host_domain):
 
 if __name__ == "__main__":
     args = parse_args()
+    # print args.host, args.port, args.username, args.password, args.domain
     ssh_conn = Linux(args.host, args.port, args.username, args.password)
     client_ssh = ssh_conn.connect_ssh()
     auto(client_ssh, args.domain)
